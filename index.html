@@ -55,7 +55,7 @@ header.nav{position:sticky;top:0;z-index:90;background:rgba(250,250,250,.88);bac
 .nav-links a:hover::after{width:100%}
 @media(max-width:920px){.nav-links{display:none}}
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-family:var(--font-display);font-weight:500;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:.95rem 1.7rem;cursor:pointer;transition:color .3s ease,border-color .5s ease;white-space:nowrap}
-.btn::before{content:"";position:absolute;top:0;left:0;width:0;height:100%;background:var(--accent);transition:width .32s ease-out;z-index:0}
+.btn::before{content:"";position:absolute;top:0;left:0;width:0;height:100%;background:var(--accent);transition:width .32s ease-out;z-index:0;pointer-events:none}
 .btn:hover::before{width:100%} .btn:hover{border-color:var(--accent);color:#fff}
 .btn span,.btn svg{position:relative;z-index:1}
 .btn-accent{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -179,6 +179,15 @@ footer{border-top:1px solid var(--line)}
 .callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:80;display:none;gap:10px}
 .callbar a{flex:1;text-align:center}
 @media(max-width:760px){.callbar{display:flex}body{padding-bottom:76px}}
+.callmodal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+.callmodal.open{display:flex}
+.callmodal-back{position:absolute;inset:0;background:rgba(19,19,21,.6)}
+.callmodal-card{position:relative;background:#fff;border:1.5px solid var(--ink);border-radius:20px;padding:1.8rem;width:min(92vw,420px);text-align:center}
+.callmodal-card small{font-family:var(--font-display);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.callmodal-num{font-family:var(--font-display);font-weight:700;font-size:1.6rem;margin:.6rem 0 .2rem}
+.callmodal-num a{text-decoration:none}
+.callmodal-card p{font-size:.85rem;color:var(--muted);margin-bottom:1.2rem}
+.callmodal-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -382,10 +391,25 @@ footer{border-top:1px solid var(--line)}
 
 <div class="callbar"><a class="btn btn-accent" href="tel:+17372601064"><span>Call now</span></a><a class="btn" style="background:#fff" href="https://www.google.com/maps/search/?api=1&amp;query=512+MacKenzie+Way+Leander+TX+78641" target="_blank" rel="noopener"><span>Directions</span></a></div>
 
+<div class="callmodal" id="callModal" role="dialog" aria-modal="true" aria-labelledby="callModalTitle">
+  <div class="callmodal-back" id="callModalBack"></div>
+  <div class="callmodal-card">
+    <small>Call Leander Dumpster Rental</small>
+    <div class="callmodal-num" id="callModalTitle"><a href="tel:+17372601064">(737) 260-1064</a></div>
+    <p>Tap the number to dial, or copy it into your phone app.</p>
+    <div class="callmodal-row">
+      <a class="btn btn-sm btn-accent" href="tel:+17372601064"><span>Dial now</span></a>
+      <button class="btn btn-sm" id="callModalCopy" type="button"><span>Copy number</span></button>
+      <button class="btn btn-sm" id="callModalClose" type="button"><span>Close</span></button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){var f=document.getElementById('loadFill'),p=document.getElementById('loadPct'),l=document.getElementById('loader'),n=0;var t=setInterval(function(){n=Math.min(100,n+Math.random()*22);f.style.width=n+'%';p.textContent=Math.floor(n)+'%';if(n>=100){clearInterval(t);setTimeout(function(){l.classList.add('done')},250)}},140);setTimeout(function(){l.classList.add('done')},2600);})();
 (function(){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)});})();
 document.querySelectorAll('.faq-item').forEach(function(it){var q=it.querySelector('.faq-q'),a=it.querySelector('.faq-a');q.addEventListener('click',function(){var open=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null});if(!open){it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}})});
+(function(){var modal=document.getElementById('callModal');function openModal(){modal.classList.add('open')}function closeModal(){modal.classList.remove('open')}document.getElementById('callModalClose').addEventListener('click',closeModal);document.getElementById('callModalBack').addEventListener('click',closeModal);document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});document.getElementById('callModalCopy').addEventListener('click',function(){var num='(737) 260-1064';if(navigator.clipboard)navigator.clipboard.writeText(num).then(function(){document.getElementById('callModalCopy').querySelector('span').textContent='Copied';setTimeout(function(){document.getElementById('callModalCopy').querySelector('span').textContent='Copy number'},1600)})});var noDialer=window.matchMedia('(hover:hover) and (pointer:fine)').matches&&navigator.maxTouchPoints===0;document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){if(noDialer){e.preventDefault();openModal()}})})})();
 (function(){var k='ldr-saved',lbl=document.getElementById('saveLabel'),btn=document.getElementById('btnSave');function paint(){var s=localStorage.getItem(k)==='1';lbl.textContent=s?'Saved':'Save';btn.setAttribute('aria-pressed',s)}paint();btn.addEventListener('click',function(){localStorage.setItem(k,localStorage.getItem(k)==='1'?'0':'1');paint()});document.getElementById('btnShare').addEventListener('click',function(){var data={title:'Leander Dumpster Rental',text:'Leander Dumpster Rental — 512 MacKenzie Way, Leander TX 78641 — (737) 260-1064',url:location.href};if(navigator.share)navigator.share(data).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(data.text+' '+data.url).then(function(){alert('Link copied.')})});document.getElementById('btnCopy').addEventListener('click',function(){var t='512 MacKenzie Way, Leander, TX 78641';if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){document.getElementById('btnCopy').querySelector('span').textContent='Copied';setTimeout(function(){document.getElementById('btnCopy').querySelector('span').textContent='Copy address'},1600)})});})();
 </script>
 </body>
