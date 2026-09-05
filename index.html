@@ -62,40 +62,36 @@ header.nav{position:sticky;top:0;z-index:90;background:rgba(250,250,250,.88);bac
 .btn-accent::before{background:var(--ink)} .btn-accent:hover{border-color:var(--ink)}
 .btn-sm{padding:.65rem 1.2rem;font-size:.72rem}
 .btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.hero{border-bottom:1px solid var(--line);position:relative}
-.hero-grid-bg{position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cpath d='M72 0H0v72' fill='none' stroke='%23131315' stroke-opacity='.07' stroke-width='1'/%3E%3C/svg%3E")}
-.hero-inner{position:relative;width:var(--content-width);margin:0 auto;padding:clamp(2rem,4vw,3.5rem) 0 clamp(2.5rem,5vw,4.5rem);display:grid;grid-template-columns:1.55fr .9fr;gap:clamp(1.5rem,3vw,3rem)}
-@media(max-width:980px){.hero-inner{grid-template-columns:1fr}}
-.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem}
+.hero{position:relative;background:var(--paper);padding:clamp(1.2rem,3vw,2.5rem) 0 clamp(2rem,4vw,3rem)}
+.hero-media{position:relative;width:var(--content-width);margin:0 auto;border:1.5px solid var(--ink);border-radius:30px;overflow:hidden;background:var(--ink);min-height:min(78vh,700px);display:flex;align-items:center;justify-content:center;text-align:center}
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-shade{position:absolute;inset:0;background:rgba(19,19,21,.58)}
+.hero-content{position:relative;z-index:1;padding:clamp(3rem,7vw,5.5rem) clamp(1.2rem,4vw,3rem);max-width:940px}
+.hero-content .eyebrow{color:#D8D8DA}
+.hero-content h1.display{color:#fff}
+.hero-content .hero-sub{color:#E4E4E6}
+.btn-light{border-color:#fff;color:#fff}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;font-family:var(--font-display);font-weight:400;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem}
 .eyebrow i{width:34px;height:2px;background:var(--accent);display:inline-block}
-h1.display{font-family:var(--font-display);font-weight:700;text-transform:uppercase;line-height:.98;letter-spacing:-.015em;font-size:clamp(2.5rem,7.2vw,5.4rem)}
+h1.display{font-family:var(--font-display);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-.015em;font-size:clamp(2.2rem,6vw,4.2rem);max-width:20ch;margin:0 auto}
 h1.display .row{display:block;overflow:hidden}
 h1.display .row>span{display:inline-block;animation:rise .9s cubic-bezier(.16,1,.3,1) both}
-h1.display .row:nth-child(2)>span{animation-delay:.1s} h1.display .row:nth-child(3)>span{animation-delay:.2s}
+h1.display .row:nth-child(2)>span{animation-delay:.1s}
 @keyframes rise{from{transform:translateY(102%)}to{transform:none}}
 h1 .accent-word{color:var(--accent)}
-.hero-sub{max-width:48ch;color:var(--ink-2);font-size:clamp(.95rem,1.4vw,1.06rem);margin-top:1.4rem}
-.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:1.6rem}
-.ghost-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:1rem}
-.chip{border:1px solid var(--line);border-radius:999px;background:#fff;font-size:.78rem;padding:.5rem .95rem;display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;transition:border-color .25s,transform .25s}
-a.chip:hover,button.chip:hover{border-color:var(--ink);transform:translateY(-1px)}
-button.chip{cursor:pointer} button.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.hero-meta{display:flex;margin-top:2rem;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
-.hero-meta div{flex:1;padding:1rem 1.1rem;border-left:1px solid var(--line)}
-.hero-meta div:first-child{border-left:0}
-.hero-meta small{display:block;font-family:var(--font-display);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:.35rem}
-.hero-meta b{font-size:.92rem} .hero-meta span{font-size:.8rem;color:var(--muted)}
-@media(max-width:560px){.hero-meta{flex-direction:column}.hero-meta div{border-left:0;border-top:1px solid var(--line)}.hero-meta div:first-child{border-top:0}}
-.book{background:var(--ink);color:#F4F2EC;border-radius:var(--radius);padding:1.6rem;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:1rem;align-self:start}
-.book::after{content:"";position:absolute;right:-46px;top:-46px;width:150px;height:150px;border-radius:50%;background:var(--accent)}
-.book-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.book-top small{font-family:var(--font-display);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#B9B9BC}
-.book-head{position:relative;z-index:1;font-family:var(--font-display);font-weight:600;font-size:1.25rem;line-height:1.25;text-transform:uppercase}
-.book-list{position:relative;z-index:1;list-style:none;display:flex;flex-direction:column;gap:.6rem;font-size:.86rem;border-top:1px solid var(--line-dark);padding-top:1rem}
-.book-list li{display:flex;justify-content:space-between;gap:12px}
-.book-list li span:last-child{color:#fff;font-weight:500;text-align:right}
-.book-list a{color:#fff}
-.book .btn{width:100%} .book-note{position:relative;z-index:1;font-size:.76rem;color:#B9B9BC}
+.hero-sub{max-width:52ch;margin:1.2rem auto 0;font-size:clamp(.95rem,1.4vw,1.06rem)}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:1.8rem}
+.clipbar{position:absolute;left:16px;bottom:16px;right:16px;z-index:1;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.clip-tabs{display:flex;gap:8px;flex-wrap:wrap;pointer-events:auto}
+.clip-tab{border:1.5px solid #fff;border-radius:999px;background:rgba(19,19,21,.72);color:#fff;font-family:var(--font-display);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.05rem;cursor:pointer;transition:background .25s,border-color .25s}
+.clip-tab:hover{border-color:var(--accent)}
+.clip-tab[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+.clip-credit{pointer-events:auto;font-size:.68rem;letter-spacing:.04em;color:#fff;background:rgba(19,19,21,.72);border:1.5px solid rgba(255,255,255,.5);border-radius:999px;padding:.55rem .95rem}
+.clip-credit a{color:#fff}
+.hero-facts{width:var(--content-width);margin:1.1rem auto 0;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.hero-facts b{color:var(--ink);font-weight:600}
+.hero-facts a{text-decoration:none;border-bottom:1px solid var(--line)}
+@media(max-width:640px){.hero-media{border-radius:20px;min-height:92vh}.clip-credit{display:none}}
 .ticker{background:var(--accent);color:#fff;overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);white-space:nowrap}
 .ticker-track{display:inline-flex;animation:tick 26s linear infinite;padding:.8rem 0}
 .ticker span{font-family:var(--font-display);font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:0 1.6rem;position:relative}
@@ -211,7 +207,6 @@ footer{border-top:1px solid var(--line)}
 <header class="nav">
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="Leander Dumpster Rental home">
-      <span class="brand-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="5.5" width="12" height="7" rx="1" stroke="#FF660F" stroke-width="1.6"/><rect x="1" y="3" width="14" height="2.4" rx="1.2" fill="#FAFAFA"/></svg></span>
       <span>Leander.<small>Dumpster rental</small></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -226,48 +221,33 @@ footer{border-top:1px solid var(--line)}
 
 <main id="top">
 <div class="hero">
-  <div class="hero-grid-bg" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="eyebrow"><i></i> Garbage collection service — Leander, Texas</div>
+  <div class="hero-media">
+    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/12588076/home-demolition-excavator-loading-roll-off-dumpster-12588076.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=627&amp;fit=crop&amp;w=1200">
+      <source id="heroSource" src="https://videos.pexels.com/video-files/12588076/12588076-hd_1280_720_24fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="eyebrow"><i></i> Garbage collection service — Leander, Texas <i></i></div>
       <h1 class="display">
         <span class="row"><span>Your Leander</span></span>
-        <span class="row"><span>dumpster rental</span></span>
-        <span class="row"><span class="accent-word">done right.</span></span>
+        <span class="row"><span>dumpster rental, <span class="accent-word">done right.</span></span></span>
       </h1>
-      <p class="hero-sub">One local call for appliances, remodel debris, furniture, full cleanouts, junk, and yard waste. Straightforward quotes, careful placement, and prompt pickup across Leander — arranged directly by phone.</p>
+      <p class="hero-sub">Appliances, remodel debris, furniture, cleanouts, junk, and yard waste. One call, one flat quote.</p>
       <div class="hero-actions">
         <a class="btn btn-accent" href="tel:+17372601064"><span>Call (737) 260-1064</span></a>
-        <a class="btn" href="#services"><span>Browse services</span></a>
-      </div>
-      <div class="ghost-row">
-        <a class="chip" href="#services">Overview</a>
-        <a class="chip" href="#sizes">Sizes</a>
-        <a class="chip" href="#area">Directions</a>
-        <button class="chip" id="btnSave" type="button" aria-pressed="false"><span id="saveLabel">Save</span></button>
-        <button class="chip" id="btnShare" type="button">Share</button>
-        <a class="chip" href="tel:+17372601064">Call</a>
-      </div>
-      <div class="hero-meta">
-        <div><small>Status</small><b>Open · Closes 8:30 PM</b><br><span>Call ahead near closing</span></div>
-        <div><small>Address</small><b>512 MacKenzie Way</b><br><span>Leander, TX 78641</span></div>
-        <div><small>Phone</small><b><a href="tel:+17372601064" style="text-decoration:none">(737) 260-1064</a></b><br><span>Quotes by phone</span></div>
+        <a class="btn btn-light" href="#services"><span>Browse services</span></a>
       </div>
     </div>
-    <aside class="book" aria-label="Contact card">
-      <div class="book-top"><small>Leander Dumpster Rental<br>Contact card</small></div>
-      <div class="book-head">Tell us about the pile. We will size the job.</div>
-      <ul class="book-list">
-        <li><span>Address</span><span>512 MacKenzie Way, Leander</span></li>
-        <li><span>Phone</span><span><a href="tel:+17372601064">(737) 260-1064</a></span></li>
-        <li><span>Hours</span><span>Open · Closes 8:30 PM</span></li>
-        <li><span>Quotes</span><span>Flat quote before you book</span></li>
-      </ul>
-      <a class="btn btn-accent" href="tel:+17372601064"><span>Get my quote</span></a>
-      <a class="btn" href="#area" style="border-color:rgba(255,255,255,.4);color:#fff"><span>Get directions</span></a>
-      <div class="book-note">For the fastest quote, have your address, material type, and preferred drop day ready.</div>
-    </aside>
+    <div class="clipbar">
+      <div class="clip-tabs" role="group" aria-label="Switch video clip">
+        <button class="clip-tab" type="button" aria-pressed="true" data-src="https://videos.pexels.com/video-files/12588076/12588076-hd_1280_720_24fps.mp4" data-poster="https://images.pexels.com/videos/12588076/home-demolition-excavator-loading-roll-off-dumpster-12588076.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=627&amp;fit=crop&amp;w=1200">Demolition load</button>
+        <button class="clip-tab" type="button" aria-pressed="false" data-src="https://videos.pexels.com/video-files/12588031/12588031-hd_1280_720_24fps.mp4" data-poster="">Jobsite</button>
+        <button class="clip-tab" type="button" aria-pressed="false" data-src="https://videos.pexels.com/video-files/32175861/13721273_1280_720_24fps.mp4" data-poster="https://images.pexels.com/videos/32175861/pexels-photo-32175861.jpeg?auto=compress&amp;w=1200">Garbage truck</button>
+      </div>
+      <span class="clip-credit">Stock footage: <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a></span>
+    </div>
   </div>
+  <div class="hero-facts"><span><b>Open · Closes 8:30 PM</b></span><span>·</span><span>512 MacKenzie Way, Leander, TX 78641</span><span>·</span><span><a href="tel:+17372601064">(737) 260-1064</a></span></div>
 </div>
 
 <div class="ticker" aria-hidden="true"><div class="ticker-track">
@@ -410,7 +390,8 @@ footer{border-top:1px solid var(--line)}
 (function(){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)});})();
 document.querySelectorAll('.faq-item').forEach(function(it){var q=it.querySelector('.faq-q'),a=it.querySelector('.faq-a');q.addEventListener('click',function(){var open=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null});if(!open){it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}})});
 (function(){var modal=document.getElementById('callModal');function openModal(){modal.classList.add('open')}function closeModal(){modal.classList.remove('open')}document.getElementById('callModalClose').addEventListener('click',closeModal);document.getElementById('callModalBack').addEventListener('click',closeModal);document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});document.getElementById('callModalCopy').addEventListener('click',function(){var num='(737) 260-1064';if(navigator.clipboard)navigator.clipboard.writeText(num).then(function(){document.getElementById('callModalCopy').querySelector('span').textContent='Copied';setTimeout(function(){document.getElementById('callModalCopy').querySelector('span').textContent='Copy number'},1600)})});var noDialer=window.matchMedia('(hover:hover) and (pointer:fine)').matches&&navigator.maxTouchPoints===0;document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.addEventListener('click',function(e){if(noDialer){e.preventDefault();openModal()}})})})();
-(function(){var k='ldr-saved',lbl=document.getElementById('saveLabel'),btn=document.getElementById('btnSave');function paint(){var s=localStorage.getItem(k)==='1';lbl.textContent=s?'Saved':'Save';btn.setAttribute('aria-pressed',s)}paint();btn.addEventListener('click',function(){localStorage.setItem(k,localStorage.getItem(k)==='1'?'0':'1');paint()});document.getElementById('btnShare').addEventListener('click',function(){var data={title:'Leander Dumpster Rental',text:'Leander Dumpster Rental — 512 MacKenzie Way, Leander TX 78641 — (737) 260-1064',url:location.href};if(navigator.share)navigator.share(data).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(data.text+' '+data.url).then(function(){alert('Link copied.')})});document.getElementById('btnCopy').addEventListener('click',function(){var t='512 MacKenzie Way, Leander, TX 78641';if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){document.getElementById('btnCopy').querySelector('span').textContent='Copied';setTimeout(function(){document.getElementById('btnCopy').querySelector('span').textContent='Copy address'},1600)})});})();
+(function(){var v=document.getElementById('heroVideo'),s=document.getElementById('heroSource'),tabs=document.querySelectorAll('.clip-tab');tabs.forEach(function(b){b.addEventListener('click',function(){tabs.forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');s.src=b.dataset.src;if(b.dataset.poster)v.poster=b.dataset.poster;v.load();var p=v.play();if(p)p.catch(function(){})})});})();
+(function(){var lbl=document.getElementById('saveLabel'),btn=document.getElementById('btnSave');if(lbl&&btn){var k='ldr-saved';function paint(){var s=localStorage.getItem(k)==='1';lbl.textContent=s?'Saved':'Save';btn.setAttribute('aria-pressed',s)}paint();btn.addEventListener('click',function(){localStorage.setItem(k,localStorage.getItem(k)==='1'?'0':'1');paint()})}var sh=document.getElementById('btnShare');if(sh){sh.addEventListener('click',function(){var data={title:'Leander Dumpster Rental',text:'Leander Dumpster Rental — 512 MacKenzie Way, Leander TX 78641 — (737) 260-1064',url:location.href};if(navigator.share)navigator.share(data).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(data.text+' '+data.url).then(function(){alert('Link copied.')})})}var cp=document.getElementById('btnCopy');if(cp){cp.addEventListener('click',function(){var t='512 MacKenzie Way, Leander, TX 78641';if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){cp.querySelector('span').textContent='Copied';setTimeout(function(){cp.querySelector('span').textContent='Copy address'},1600)})})}})();
 </script>
 </body>
 </html>
